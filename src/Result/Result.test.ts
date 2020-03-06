@@ -121,6 +121,13 @@ describe('Resultクラスのテスト', () => {
               .onFailure(error => successIfEvenWithStringValue(value))
               .onSuccess(str => expect(str).toBe(`${value} is even.`))
         })
+
+        it('onFailureに到達せず、後続にonSuccessが続くとき、onFailureの前のResultが後続のonSuccessに渡る', () => {
+            const value = 6
+            successIfEvenWithNumberValue(value)
+              .onFailure(error => {throw new Error('failed')})
+              .onSuccess(num => expect(num).toBe(value))
+        })
     })
 
     describe('allのテスト', () => {

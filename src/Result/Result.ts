@@ -48,8 +48,7 @@ export class Result<T, E> {
     }
 
     public onSuccess<NextT, NextE>(func: OnSuccessCallback<T, NextT, NextE>): Result<NextT, E | NextE>
-    public onSuccess<NextT, NextE>(func: Function)
-    {
+    public onSuccess<NextT, NextE>(func: Function) {
         if (this.isSuccess) {
             const result = this.hasValue ? func(this.getValue()) : func()
 
@@ -83,95 +82,106 @@ export class Result<T, E> {
         return new Result(true)
     }
 
-
     public static all<U1, U2, U3, U4, U5, U6, U7, U8, U9, U10, E1, E2, E3, E4, E5, E6, E7, E8, E9, E10>(
       results: readonly [
-        U1 | Result<U1, E1>,
-        U2 | Result<U2, E2>,
-        U3 | Result<U3, E3>,
-        U4 | Result<U4, E4>,
-        U5 | Result<U5, E5>,
-        U6 | Result<U6, E6>,
-        U7 | Result<U7, E7>,
-        U8 | Result<U8, E8>,
-        U9 | Result<U9, E9>,
-        U10 | Result<U10, E10>
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>,
+        Exclude<U5, Promise<any>> | Result<Exclude<U5, Promise<any>>, E5>,
+        Exclude<U6, Promise<any>> | Result<Exclude<U6, Promise<any>>, E6>,
+        Exclude<U7, Promise<any>> | Result<Exclude<U7, Promise<any>>, E7>,
+        Exclude<U8, Promise<any>> | Result<Exclude<U8, Promise<any>>, E8>,
+        Exclude<U9, Promise<any>> | Result<Exclude<U9, Promise<any>>, E9>,
+        Exclude<U10, Promise<any>> | Result<Exclude<U10, Promise<any>>, E10>,
       ]
     ): Result<[U1, U2, U3, U4, U5, U6, U7, U8, U9, U10], E1 | E2 | E3 | E4 | E5 | E6 | E7 | E8 | E9 | E10>
 
     public static all<U1, U2, U3, U4, U5, U6, U7, U8, U9, E1, E2, E3, E4, E5, E6, E7, E8, E9>(
       results: readonly [
-        U1 | Result<U1, E1>,
-        U2 | Result<U2, E2>,
-        U3 | Result<U3, E3>,
-        U4 | Result<U4, E4>,
-        U5 | Result<U5, E5>,
-        U6 | Result<U6, E6>,
-        U7 | Result<U7, E7>,
-        U8 | Result<U8, E8>,
-        U9 | Result<U9, E9>
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>,
+        Exclude<U5, Promise<any>> | Result<Exclude<U5, Promise<any>>, E5>,
+        Exclude<U6, Promise<any>> | Result<Exclude<U6, Promise<any>>, E6>,
+        Exclude<U7, Promise<any>> | Result<Exclude<U7, Promise<any>>, E7>,
+        Exclude<U8, Promise<any>> | Result<Exclude<U8, Promise<any>>, E8>,
+        Exclude<U9, Promise<any>> | Result<Exclude<U9, Promise<any>>, E9>,
       ]
     ): Result<[U1, U2, U3, U4, U5, U6, U7, U8, U9], E1 | E2 | E3 | E4 | E5 | E6 | E7 | E8 | E9>
 
     public static all<U1, U2, U3, U4, U5, U6, U7, U8, E1, E2, E3, E4, E5, E6, E7, E8>(
       results: readonly [
-        U1 | Result<U1, E1>,
-        U2 | Result<U2, E2>,
-        U3 | Result<U3, E3>,
-        U4 | Result<U4, E4>,
-        U5 | Result<U5, E5>,
-        U6 | Result<U6, E6>,
-        U7 | Result<U7, E7>,
-        U8 | Result<U8, E8>
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>,
+        Exclude<U5, Promise<any>> | Result<Exclude<U5, Promise<any>>, E5>,
+        Exclude<U6, Promise<any>> | Result<Exclude<U6, Promise<any>>, E6>,
+        Exclude<U7, Promise<any>> | Result<Exclude<U7, Promise<any>>, E7>,
+        Exclude<U8, Promise<any>> | Result<Exclude<U8, Promise<any>>, E8>,
       ]
     ): Result<[U1, U2, U3, U4, U5, U6, U7, U8], E1 | E2 | E3 | E4 | E5 | E6 | E7 | E8>
 
     public static all<U1, U2, U3, U4, U5, U6, U7, E1, E2, E3, E4, E5, E6, E7>(
       results: readonly [
-        U1 | Result<U1, E1>,
-        U2 | Result<U2, E2>,
-        U3 | Result<U3, E3>,
-        U4 | Result<U4, E4>,
-        U5 | Result<U5, E5>,
-        U6 | Result<U6, E6>,
-        U7 | Result<U7, E7>
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>,
+        Exclude<U5, Promise<any>> | Result<Exclude<U5, Promise<any>>, E5>,
+        Exclude<U6, Promise<any>> | Result<Exclude<U6, Promise<any>>, E6>,
+        Exclude<U7, Promise<any>> | Result<Exclude<U7, Promise<any>>, E7>,
       ]
     ): Result<[U1, U2, U3, U4, U5, U6, U7], E1 | E2 | E3 | E4 | E5 | E6 | E7>
 
     public static all<U1, U2, U3, U4, U5, U6, E1, E2, E3, E4, E5, E6>(
       results: readonly [
-        U1 | Result<U1, E1>,
-        U2 | Result<U2, E2>,
-        U3 | Result<U3, E3>,
-        U4 | Result<U4, E4>,
-        U5 | Result<U5, E5>,
-        U6 | Result<U6, E6>
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>,
+        Exclude<U5, Promise<any>> | Result<Exclude<U5, Promise<any>>, E5>,
+        Exclude<U6, Promise<any>> | Result<Exclude<U6, Promise<any>>, E6>,
       ]
     ): Result<[U1, U2, U3, U4, U5, U6], E1 | E2 | E3 | E4 | E5 | E6>
 
     public static all<U1, U2, U3, U4, U5, E1, E2, E3, E4, E5>(
       results: readonly [
-        U1 | Result<U1, E1>,
-        U2 | Result<U2, E2>,
-        U3 | Result<U3, E3>,
-        U4 | Result<U4, E4>,
-        U5 | Result<U5, E5>
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>,
+        Exclude<U5, Promise<any>> | Result<Exclude<U5, Promise<any>>, E5>
       ]
     ): Result<[U1, U2, U3, U4, U5], E1 | E2 | E3 | E4 | E5>
 
     public static all<U1, U2, U3, U4, E1, E2, E3, E4>(
-      results: readonly [U1 | Result<U1, E1>, U2 | Result<U2, E2>, U3 | Result<U3, E3>, U4 | Result<U4, E4>]
+      results: readonly [
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>,
+        Exclude<U4, Promise<any>> | Result<Exclude<U4, Promise<any>>, E4>
+      ]
     ): Result<[U1, U2, U3, U4], E1 | E2 | E3 | E4>
 
     public static all<U1, U2, U3, E1, E2, E3>(
-      results: readonly [U1 | Result<U1, E1>, U2 | Result<U2, E2>, U3 | Result<U3, E3>]
+      results: readonly [
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>,
+        Exclude<U3, Promise<any>> | Result<Exclude<U3, Promise<any>>, E3>
+      ]
     ): Result<[U1, U2, U3], E1 | E2 | E3>
 
     public static all<U1, U2, E1, E2>(
-      results: readonly [U1 | Result<U1, E1>, U2 | Result<U2, E2>]
+      results: readonly [
+        Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>,
+        Exclude<U2, Promise<any>> | Result<Exclude<U2, Promise<any>>, E2>
+      ]
     ): Result<[U1, U2], E1 | E2>
 
-    public static all<U1, E1>(results: readonly [U1 | Result<U1, E1>]): Result<[U1], E1>
+    public static all<U1, E1>(results: readonly [Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>]): Result<[U1], E1>
 
     public static all<U, E>(results: readonly (U | Result<U, E>)[]): Result<U[], E> {
         const values = []
@@ -190,4 +200,4 @@ export class Result<T, E> {
     }
 }
 
-type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | TNext : (value: T) => Result<TNext, ENext> | TNext
+type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | Exclude<TNext, Promise<any>> : (value: T) => Result<TNext, ENext> | Exclude<TNext, Promise<any>>

@@ -40,32 +40,6 @@ describe('Resultクラスのテスト', () => {
         })
     })
 
-    describe('ユーティリティ系メソッドのテスト', () => {
-        it('メソッドチェーンで処理に成功した場合と失敗した場合で、それぞれ処理を記述できる', () => {
-            expect.assertions(2)
-            const successResult = Result.ok(5)
-
-            successResult
-              .onSuccess((value: number) => {
-                  expect(value).toBe(5)
-              })
-              .onFailure((error: any) => {
-                  console.log('not reached here')
-              })
-
-            const errorMessage = 'error occurred'
-            const failureResult = Result.fail(errorMessage)
-
-            failureResult
-              .onSuccess(() => {
-                  console.log('not reached here')
-              })
-              .onFailure(error => {
-                  expect(error).toBe(errorMessage)
-              })
-        })
-    })
-
     describe('allのテスト', () => {
         describe('成功', () => {
             it('単一', () => {

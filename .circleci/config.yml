@@ -1,10 +1,15 @@
-version: 2
+version: 2.1
 jobs:
   test:
-    working_directory: ~/
     docker:
       -image: circleci/node:12.12.0
+    working_directory: ~/repo
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
+      - run: yarn install
+      - run: npm run test
+
+workflows:
+  test-flow:
+      jobs:
+        - test

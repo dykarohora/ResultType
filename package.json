@@ -31,8 +31,5 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:dykarohora/ResultType.git"
-  },
-  "dependencies": {
-    "ResultType": "./ResultType-0.9.0.tgz"
   }
 }

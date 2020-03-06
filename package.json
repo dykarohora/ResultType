@@ -1,6 +1,6 @@
 {
   "name": "type-result",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "d_yama <7d.yama@gmail.com>",

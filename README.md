@@ -1,4 +1,4 @@
-# ResultType
+# type-result
 
 [![CircleCI](https://circleci.com/gh/dykarohora/ResultType.svg?style=svg)](https://circleci.com/gh/dykarohora/ResultType)
 [![codecov](https://codecov.io/gh/dykarohora/ResultType/branch/master/graph/badge.svg)](https://codecov.io/gh/dykarohora/ResultType)
@@ -7,14 +7,14 @@ Package for type-safe error handling without exception.
 
 ## install
 
-`npm install ResultType`
+`npm install type-result`
 
 ## Usage
 
 ### Basic Usage
 
 ```typescript
-import { Result } from '../../src'
+import { Result } from 'type-result'
 
 interface User {
     name: string
@@ -119,7 +119,7 @@ When considering business rules, there is almost one pattern of success in perfo
 
 In cases where there are multiple failure patterns, it is difficult to express failures using simple types.As in the case of the callback function of Node, there is a method of returning the reason for failure and the result of processing as a tuple, but expressing the reason for failure with a primitive type makes maintenance difficult later.  
 
-One idea is to use the `ResultType` and Union Type to express errors on business rules.
+One idea is to use the `type-result` and Union Type to express errors on business rules.
 
 ```typescript
 abstract class AppError {

@@ -47,8 +47,9 @@ export class Result<T, E> {
         return new Result<never, E>(false, undefined, error)
     }
 
-    public onSuccess<NextT, NextE>(func: (value: T) => Result<NextT, NextE> | NextT): Result<NextT, E | NextE>
-    public onSuccess<NextT, NextE>(func: Function) {
+    public onSuccess<NextT, NextE>(func: OnSuccessCallback<T, NextT, NextE>): Result<NextT, E | NextE>
+    public onSuccess<NextT, NextE>(func: Function)
+    {
         if (this.isSuccess) {
             const result = this.hasValue ? func(this.getValue()) : func()
 
@@ -188,3 +189,5 @@ export class Result<T, E> {
         return Result.ok(values)
     }
 }
+
+type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | TNext : (value: T) => Result<TNext, ENext> | TNext

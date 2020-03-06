@@ -86,7 +86,7 @@ describe('Resultクラスのテスト', () => {
             const value = 5
             successIfEven(2)
               .onSuccess(() => {
-                  return value
+                  return Result.ok(5)
               })
               .onSuccess(num => {
                   expect(num).toBe(value)

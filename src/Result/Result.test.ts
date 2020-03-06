@@ -63,22 +63,6 @@ describe('Resultクラスのテスト', () => {
               .onFailure(error => {
                   expect(error).toBe(errorMessage)
               })
-
-            Result.ok()
-              .onSuccess(() => {
-                  console.log('success')
-              })
-              .onFailure(() => {
-                  console.log('fail')
-              })
-
-            Result.fail('error')
-              .onSuccess(() => {
-                  console.log('success')
-              })
-              .onFailure(() => {
-                  console.log('fail')
-              })
         })
     })
 

@@ -12,7 +12,6 @@ module.exports = {
         '^.+\\.(ts|tsx)$': 'ts-jest'
     },
     collectCoverage: true,
-    collectCoverageFrom: ['./src/**/*.test.ts'],
     coverageDirectory: './coverage/',
 }
 

@@ -1,3 +1,5 @@
+.circleci
+.idea
 src/
 coverage/
 tsconfig.json

@@ -1,0 +1,13 @@
+{
+  "name": "ResultType",
+  "version": "0.9.0",
+  "main": "index.js",
+  "repository": "git@github.com:dykarohora/ResultType.git",
+  "author": "d_yama <d_yama@hololab.co.jp>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  }
+}

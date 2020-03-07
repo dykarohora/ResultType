@@ -115,9 +115,9 @@ Type assertion is not required for unwrapped objects because type inference is i
 
 ## Type-Safe Error Handling
 
-When considering business rules, there is almost one pattern of success in performing a certain process, but there are often multiple patterns of failure.For example, imagine the process of registering a web service account.The success pattern for this process is only the completion of account registration.On the other hand, there are several possible failure patterns, such as a poorly formatted email address or a password that does not match security requirements.  
+When considering business rules, there is almost one pattern of success in performing a certain process, but there are often multiple patterns of failure. For example, imagine the process of registering a web service account.The success pattern for this process is only the completion of account registration. On the other hand, there are several possible failure patterns, such as a poorly formatted email address or a password that does not match security requirements.  
 
-In cases where there are multiple failure patterns, it is difficult to express failures using simple types.As in the case of the callback function of Node, there is a method of returning the reason for failure and the result of processing as a tuple, but expressing the reason for failure with a primitive type makes maintenance difficult later.  
+In cases where there are multiple failure patterns, it is difficult to express failures using simple types. As in the case of the callback function of Node, there is a method of returning the reason for failure and the result of processing as a tuple, but expressing the reason for failure with a primitive type makes maintenance difficult later.  
 
 One idea is to use the `type-result` and Union Type to express errors on business rules.
 
@@ -174,7 +174,12 @@ if(registerAccountResult.isFailure) {
 }
 ```
 
-Inheriting the abstract error type, it expresses errors on concrete business rules in concrete form.By using a discriminant union for concrete types that represent failure, you can use the power of type inference when determining the type of an error.Depending on the IDE, the switch statement can be automatically generated.  
+Inheriting the abstract error type, it expresses errors on concrete business rules in concrete form. By using a discriminant union for concrete types that represent failure, you can use the power of type inference when determining the type of an error. Depending on the IDE, the switch statement can be automatically generated.  
+
+## TODO
+
+* Asynchronous operation
+* Pattern matching like Rust
 
 ## Lincence
 

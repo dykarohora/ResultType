@@ -200,5 +200,5 @@ export class Result<T, E> {
     }
 }
 
-// type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | Exclude<TNext, Promise<any>> : (value: T) => Result<TNext, ENext> | Exclude<TNext, Promise<any>>
-type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | TNext : (value: T) => Result<TNext, ENext> | TNext
+type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | Exclude<TNext, Promise<any>> : (value: T) => Result<TNext, ENext> | Exclude<TNext, Promise<any>>
+// type OnSuccessCallback<T, TNext, ENext> = T extends void ? () => Result<TNext, ENext> | TNext : (value: T) => Result<TNext, ENext> | TNext

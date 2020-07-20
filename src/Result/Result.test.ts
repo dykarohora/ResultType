@@ -109,7 +109,9 @@ describe('Resultクラスのテスト', () => {
         it('onFailureにResult型でない値を返す関数を渡すと、その値をResult.okでラップして返す', () => {
             const value = 7
             successIfEven(5)
-              .onSuccess(() => {throw new Error('failed')})
+              .onSuccess(() => {
+                  throw new Error('failed')
+              })
               .onFailure(error => value)
               .onSuccess(num => expect(num).toBe(value))
         })
@@ -117,7 +119,9 @@ describe('Resultクラスのテスト', () => {
         it('onFailureにResult型を返す関数を渡すと、onSuccessはそのResultを返す', () => {
             const value = 6
             successIfEven(5)
-              .onSuccess(() => {throw new Error('failed')})
+              .onSuccess(() => {
+                  throw new Error('failed')
+              })
               .onFailure(error => successIfEvenWithStringValue(value))
               .onSuccess(str => expect(str).toBe(`${value} is even.`))
         })
@@ -125,7 +129,9 @@ describe('Resultクラスのテスト', () => {
         it('onFailureに到達せず、後続にonSuccessが続くとき、onFailureの前のResultが後続のonSuccessに渡る', () => {
             const value = 6
             successIfEvenWithNumberValue(value)
-              .onFailure(error => {throw new Error('failed')})
+              .onFailure(error => {
+                  throw new Error('failed')
+              })
               .onSuccess(num => expect(num).toBe(value))
         })
     })
@@ -133,6 +139,7 @@ describe('Resultクラスのテスト', () => {
     describe('allのテスト', () => {
         describe('成功', () => {
             it('単一', () => {
+                //@ts-ignore
                 const result = Result.all([Result.ok(5)])
                 expect(result.isSuccess)
                 expect(result.getValue()).toContain(5)
@@ -186,6 +193,30 @@ describe('Resultクラスのテスト', () => {
 
                 expect(results.getValue()).toContain(1)
                 expect(results.getValue()).toContain('abc')
+            })
+
+            it('2つ、結果は両方ともResult.ok()', () => {
+                const results = Result.all([Result.ok(), Result.ok()])
+                expect(results.isSuccess).toBeTruthy()
+                const v = results.getValue()
+                expect(v[0]).toBeUndefined()
+                expect(v[1]).toBeUndefined()
+            })
+
+            it('2つ、結果は値ありと値なしの混在', () => {
+                const results = Result.all([Result.ok(), Result.ok(1)])
+                expect(results.isSuccess).toBeTruthy()
+                const v = results.getValue()
+                expect(v[0]).toBeUndefined()
+                expect(v[1]).toBe(1)
+            })
+
+            it('2つ、結果は値ありと生値の混在', () => {
+                const results = Result.all([Result.ok(), 'abc'])
+                expect(results.isSuccess).toBeTruthy()
+                const v = results.getValue()
+                expect(v[0]).toBeUndefined()
+                expect(v[1]).toBe('abc')
             })
         })
 

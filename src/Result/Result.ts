@@ -183,12 +183,16 @@ export class Result<T, E> {
 
     public static all<U1, E1>(results: readonly [Exclude<U1, Promise<any>> | Result<Exclude<U1, Promise<any>>, E1>]): Result<[U1], E1>
 
-    public static all<U, E>(results: readonly (U | Result<U, E>)[]): Result<U[], E> {
+    public static all<U, E>(results: readonly (U | Result<U, E>)[]): Result<(U | undefined)[], E> {
         const values = []
         for (const result of results) {
             if (result instanceof Result) {
                 if (result.isSuccess) {
-                    values.push(result.getValue())
+                    if (result.hasValue) {
+                        values.push(result.getValue())
+                    } else {
+                        values.push(undefined)
+                    }
                 } else {
                     return Result.fail(result.getError())
                 }
